@@ -5,9 +5,15 @@ const fs = require('fs');
 
 // Express setup
 var app = express();
-var PORT = 8080;
+var PORT = process.env.PORT || 8080;
 
 let notesArr = [];
+
+// Reassigns notesArr to JSON object saved in db.json
+fs.readFile('db/db.json', 'utf8', function (err, data) {
+    if (err) throw err;
+    notesArr = JSON.parse(data);
+})
 
 // Express setup to handle data parsing
 app.use(express.urlencoded({ extended: true }));
@@ -17,6 +23,7 @@ app.use(express.json());
 // =============================================================
 app.use(express.static('public'));
 
+// Displays notes page
 app.get("/notes", function(req, res) {
     res.sendFile(path.join(__dirname, "public/notes.html"));
 });
