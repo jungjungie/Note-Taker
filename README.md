@@ -3,9 +3,9 @@ This application can write, save, and delete notes. It uses an express backend t
 
 Initial starter files included a db.json and all files within the public folder, making up the frontend of this application. The backend was created thereafter to connect the two and make the app fully functional.
 
-**Deployed through Heroku:**
+**Deployed through Heroku:** https://jungjungie-note-taker.herokuapp.com/
 
-<div style="text-align:center"><img src="assets/images/webpage.jpg" /></div>
+<div style="text-align:center"><img src="public/assets/images/screenshot.jpg" /></div>
 
 
 ## Table of Contents
@@ -39,7 +39,7 @@ node server
 
 ***
 ## Demo
-![gif demo of app](assets/images/demo1a.gif)
+![gif demo of app](public/assets/images/demo.gif)
 
 
 ***

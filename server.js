@@ -79,6 +79,7 @@ app.delete("/api/notes/:id", function(req, res) {
     })
 });
 
+// Assigns all other page routes not defined above to index.html
 app.get("*", function(req, res) {
     res.sendFile(path.join(__dirname, "public/index.html"));
 });
