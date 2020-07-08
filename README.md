@@ -5,7 +5,7 @@ Initial starter files included a db.json and all files within the public folder,
 
 **Deployed through Heroku:** https://jungjungie-note-taker.herokuapp.com/
 
-<div style="text-align:center"><img src="public/assets/images/screenshot.jpg" /></div>
+<div style="text-align:center"><img src="public/assets/images/screenshot1.jpg" /></div>
 
 
 ## Table of Contents
