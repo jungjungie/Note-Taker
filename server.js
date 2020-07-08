@@ -29,15 +29,15 @@ app.get("/api/notes", function(req, res) {
 // Receives a new note to save, adds it to db.json, and returns the new note to the client
 app.post("/api/notes", function(req, res) {
     let newNote = req.body;
-    notesArr.push(newNote);
-    console.log(notesArr);
-
     let id = 1;
+
+    notesArr.push(newNote);
 
     notesArr.forEach(item => {
         item.id = id;
         id++
     })
+    console.log(notesArr);
 
     fs.writeFile("db/db.json", JSON.stringify(notesArr), function(err) {
         if (err) throw err;
@@ -52,22 +52,21 @@ app.delete("/api/notes/:id", function(req, res) {
     fs.readFile('db/db.json', 'utf8', function (err, data) {
         if (err) throw err;
 
-        let savedNotesArr = JSON.parse(data);
+        notesArr = JSON.parse(data);
         let chosenId = req.params.id;
     
-        for (let i=0; i < savedNotesArr.length; i++) {
-            if (chosenId == savedNotesArr[i].id) {
-                let chosenIndex = savedNotesArr.indexOf(savedNotesArr[i]);
+        for (let i=0; i < notesArr.length; i++) {
+            if (chosenId == notesArr[i].id) {
+                let chosenIndex = notesArr.indexOf(notesArr[i]);
 
-                savedNotesArr.splice(chosenIndex, 1);
+                notesArr.splice(chosenIndex, 1);
 
-                fs.writeFile("db/db.json", JSON.stringify(savedNotesArr), function(err) {
+                fs.writeFile("db/db.json", JSON.stringify(notesArr), function(err) {
                     if (err) throw err;
-                    console.log('Your savedNotesArr was successfully written to db.json!')
+                    console.log('Your notesArr was successfully re-written to db.json!')
                 })
 
-                notesArr = savedNotesArr;
-                return res.json(savedNotesArr);
+                return res.json(notesArr);
             }
         }
     })
